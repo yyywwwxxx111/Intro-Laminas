@@ -1,0 +1,117 @@
+<?php
+// module/Application/view/application/index/repeat.phtml:
+
+$title = 'Search Email';
+$this->headTitle($title);
+?>
+<head>
+    <style>
+        h1
+        {
+            text-align: center;
+        }
+        .add_new{
+            position: absolute;
+            top: 100px;
+            right: 50px;
+
+        }
+
+
+        #search-box {
+            width: 100%;
+            margin: 0;
+        }
+        #search-form
+        {
+
+            position: absolute;
+            top: 100px;
+            right: 200px;
+            height: 25px;
+            width: 220px;
+            border: 1px solid #999;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        #search-text
+        {
+            font-size: 14px;
+            color: #ddd;
+            border-width: 0;
+            background: transparent;
+        }
+
+        #search-box input[type="text"]
+        {
+            width: 90%;
+            padding: 5px 0 12px 1em;
+            color: #333;
+            outline: none;
+        }
+
+        #search-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 25px;
+            width: 80px;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+
+            border-width: 0;
+            background-color:#ff6c0e;
+
+            cursor: pointer;
+        }
+
+        #alert{
+            color: #ff6c0e;
+
+            margin-top:200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<h1 ><?= $this->escapeHtml($title) ?></h1>
+
+<div id='search-box' class='form'>
+    <div id='search-form' method='post' target='_top'>
+        <input id="search-text"  placeholder='Search' type="text"/>
+        <button onclick="jump()" id='search-button'>
+            <span>Search</span>
+        </button>
+    </div>
+</div>
+<a class="add_new" href="<?= $this->url('email', ['action' => 'add']) ?>">Add new Email</a>
+
+
+<h1 id="alert">SORRY, The Id and Name are already exist, please change your Id or name</h1>
+
+
+<script>
+    function jump(){
+        const obj = document.getElementById("search-text");
+        if(obj.value ==""){
+            alert("You have not input anything!");
+        }
+        else if(!/^[0-9]*$/.test(obj.value)){
+            alert("Please input an Integer");
+        }
+        else{
+            const s = document.getElementById('search-text');
+            window.location.href='/email/search/' + encodeURI(s.value);
+        }
+    }
+    const tt = document.getElementById('search-text');
+    tt.addEventListener("keyup", function(event) {
+        if (event.key === 'Enter') {
+            jump();
+        }
+    });
+</script>

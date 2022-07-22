@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <link rel="stylesheet" href="style.css" />-->
+    <link rel="icon" type="image/x-icon" href="<?= $this->basePath('img/favicon.ico') ?>">
+    <title>UpperLevel</title>
+    <style>
+        .image-level{
+            width: 75px;
+            height: 60px;
+            overflow: hidden;
+            margin-top: -6px;
+            margin-left: 20px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft Sans Serif";
+        }
+        a {
+            text-decoration: none;
+        }
+        li {
+            list-style: none;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            background-color: #ffffff;
+            color: #fff;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+
+        }
+        .nav-links a {
+            color: #ff6c0e;
+        }
+        /* NAVBAR MENU */
+        .menu {
+            display: flex;
+            gap: 1em;
+            font-size: 18px;
+        }
+        .menu li:hover {
+            background-color: #243746;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+        .menu li {
+            padding: 5px 14px;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <!-- LOGO -->
+<!--    <div class="logo">MUO</div>-->
+    <img src="<?= $this->basePath('img/upperlevel.svg') ?>" class="image-level" alt="Email">
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+            <li><a href="/">Home</a></li>
+        </div>
+    </ul>
+</nav>
+<div class="container">
+    <?= $this->content ?>
+</div>
+</body>
+</html>
+
+

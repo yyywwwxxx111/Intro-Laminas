@@ -1,0 +1,100 @@
+<?php
+// module/Application/view/application/index/add.phtml:
+
+$title = 'Add new Email';
+$this->headTitle($title);
+?>
+<head>
+    <style>
+        h1
+        {
+            text-align: center;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #ff6c0e;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #ff6c0e;
+        }
+
+        form {
+            border-radius: 5px;
+            background-color: #243746;
+            padding: 20px;
+            width: 70%;
+            margin: 20px auto;
+        }
+        label{
+            color:white;
+        }
+        .help-inline{
+            color:red;
+        }
+    </style>
+</head>
+    <h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+// This provides a default CSS class and placeholder text for the uid element:
+$uid = $form->get('uid');
+$uid->setAttribute('class', 'form-control');
+$uid->setAttribute('placeholder', 'Uid');
+// This provides a default CSS class and placeholder text for the title element:
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$email_string = $form->get('email_string');
+$email_string->setAttribute('class', 'form-control');
+$email_string->setAttribute('placeholder', 'Email');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('email', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+// label, element, and errors separately within ?>
+
+<div class="form">
+    <div class="form-group">
+        <?= $this->formLabel($uid) ?>
+        <?= $this->formElement($uid) ?>
+    </div>
+    <div class="form-group">
+        <?= $this->formLabel($name) ?>
+        <?= $this->formElement($name) ?>
+    </div>
+
+    <div class="form-group">
+        <?= $this->formLabel($email_string) ?>
+        <?= $this->formElement($email_string) ?>
+    </div>
+</div>
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
